@@ -10,7 +10,7 @@ const ImgStyled = styled("img")({
 	objectFit: 'cover',
 })
 
-const ImageListStyled = styled(ImageList)({
+const ImageListStyled = styled(ImageListItem)({
 	overflow: 'hidden',
 })
 
@@ -22,8 +22,8 @@ const Movies = (props) => {
 	return (
 		<ImageList cols={matchDownMd ? 1 : 5} rowHeight={365} gap={12}>
 			{
-				movies.results.map((movie) => (
-					<ImageListStyled key={movie.id}>
+				movies.results.map((movie, index) => (
+					<ImageListStyled key={index}>
 						<Link to={`/movie/${movie.id}`}>
 							{
 								movie.poster_path && (
