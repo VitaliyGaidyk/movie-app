@@ -41,8 +41,8 @@ const Layout = (props) => {
 					<Img src={Logo} alt=""/>
 				</Link>
 				<SearchMovie/>
+				{children}
 			</LayoutWrapper>
-			{children}
 		</ThemeProvider>
 	);
 };

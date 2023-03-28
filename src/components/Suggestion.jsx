@@ -47,8 +47,9 @@ const Suggestion = (props) => {
 
 		dispatch(searchMovies(event.target.value))
 	}
+
 	return (
-		<Downshift>
+		<Downshift itemToString={() => ''}>
 			{({
 				  getInputProps,
 				  getItemProps,
