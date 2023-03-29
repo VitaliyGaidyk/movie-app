@@ -1,34 +1,15 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getMovie, resetMovie} from "../redux/movie";
-import {useParams} from "react-router-dom";
+import React from 'react';
+import {useSelector} from "react-redux";
 import Movie from "../components/Movie";
 import Loader from "../components/Loader";
+import useMovieDetails from "../hooks/useMovieDetails";
 
 const MovieDetails = () => {
-	const dispatch = useDispatch()
-	const {movie} = useSelector((store) => store)
+	const {movie} = useMovieDetails()
 	const {genres} = useSelector((store) => store.genres)
-	const {id} = useParams()
 	const isFetching = movie.isFetching
 
-	useEffect(() => {
-		dispatch(getMovie(id ? parseInt(id, 10) : 0))
-
-		return () => {
-			dispatch(resetMovie())
-		}
-	}, [dispatch])
-
-	useEffect(() => {
-		if (id !== movie.id?.toString()) {
-			dispatch(getMovie(id ? parseInt(id, 10) : 0))
-		}
-	}, [id, movie.id])
-
-	return (
-		isFetching ? <Loader/> : <Movie movie={movie} genres={genres}/>
-	);
+	return isFetching ? <Loader/> : <Movie movie={movie} genres={genres}/>
 };
 
 export default MovieDetails;

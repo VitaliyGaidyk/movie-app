@@ -1,11 +1,10 @@
 import React from 'react';
 import {Grid, MenuItem, Paper, styled, TextField, Typography} from "@mui/material";
-import {useDispatch} from "react-redux";
-import {searchMovies} from "../redux/search";
 import Downshift from "downshift";
 import {Link} from "react-router-dom";
 import {COVER_PLACEHOLDER, IMAGES_PATH} from "../config";
 import mapGenres from "../lib/helper";
+import useSuggestion from "../hooks/useSuggestion";
 
 const PaperStyled = styled(Paper)({
 	backgroundColor: 'darkgoldenrod',
@@ -38,15 +37,7 @@ const CaptionStyle = styled(Typography)({
 
 const Suggestion = (props) => {
 	const {movies, genres} = props
-	const dispatch = useDispatch()
-
-	const onChangeHandler = (event) => {
-		if (!event.target.value) {
-			return
-		}
-
-		dispatch(searchMovies(event.target.value))
-	}
+	const {onChangeHandler} = useSuggestion()
 
 	return (
 		<Downshift itemToString={() => ''}>

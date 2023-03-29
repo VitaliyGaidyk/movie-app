@@ -2,6 +2,7 @@ import React from 'react';
 import {Grid, styled, Typography} from "@mui/material";
 import {IMAGES_PATH, COVER_PLACEHOLDER} from "../config";
 import Movies from "./Movies";
+import formatRuntime from "../lib/formatRuntime";
 
 const GridStyled = styled(Grid)(({theme}) => ({
 	marginBottom: theme.spacing(3)
@@ -12,13 +13,6 @@ const ImgStyled = styled("img")({
 })
 const Movie = (props) => {
 	const {movie, genres} = props
-
-	const formatRuntime = (runtime) => {
-		const hours = Math.floor(runtime / 60) + 'h'
-		const minutes = (runtime % 60) + 'm'
-
-		return `${hours} ${minutes}`
-	}
 
 	return (
 		<>

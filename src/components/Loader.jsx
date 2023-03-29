@@ -6,9 +6,11 @@ const LoaderWrapper = styled('div')(({theme}) => ({
 }))
 
 const Loader = () => {
-	return (<LoaderWrapper>
+	return (
+		<LoaderWrapper>
 			<CircularProgress/>
-		</LoaderWrapper>);
+		</LoaderWrapper>
+	)
 };
 
 export default Loader;
